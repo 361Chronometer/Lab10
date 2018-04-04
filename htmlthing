@@ -1,0 +1,38 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+
+
+public class htmlthing {
+	public static void main(String[] args){
+		StringBuilder builder = new StringBuilder();
+		try{
+			BufferedReader in = new BufferedReader(new FileReader("lab10.html"));
+			String str;
+			while((str = in.readLine()) != null){
+				//System.out.println(str);
+				if(str.equals("	<!StartHere>")){
+					//System.out.print("OK");
+					builder.append(str);
+					builder.append("\n	<tr>");
+					builder.append("\n		<th> First Name </th>");
+					builder.append("\n		<th> Last Name </th>");
+					builder.append("\n		<th> Department </th>");
+					builder.append("\n		<th> Phone Number </th>");
+					builder.append("\n		<th> Gender </th>");
+					builder.append("\n	</tr>");
+				}
+				else{
+					builder.append(str);
+				}
+				
+			}
+			in.close();
+		} catch (IOException e){
+			
+		}
+		String content = builder.toString();
+		System.out.println(content);
+	}
+}
